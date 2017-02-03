@@ -1,0 +1,32 @@
+{
+  "name": "selector",
+  "version": "0.0.1",
+  "description": "Turn arbitrary commands into selectable lists",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanpon/node-selector"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/**/*.spec.js",
+    "bench": "node ./test/bench.js",
+    "lint": "eslint ."
+  },
+  "author": "Ryan Pon",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "eslint": "^2.13.1",
+    "eslint-plugin-babel": "^3.3.0",
+    "lodash": "^3.10.1",
+    "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "yargs": "^6.6.0"
+  }
+}
