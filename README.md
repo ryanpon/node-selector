@@ -5,14 +5,14 @@ Turn arbitrary commands into selectable lists
 
 Via npm:
 
-    npm install -g TODO
+    npm install -g cli-selector
 
 ## Usage
 
-### Exec mode (default)
+### Exec mode (default): -e | --exec
 
 ```bash
-# sel --mode=exec <command to execute>
+# sel --exec <command to execute>
 
 cd `sel ls`
 (1)  LICENSE
@@ -24,24 +24,28 @@ cd `sel ls`
 Which line do you want to select?
 ```
 
-### JSON mode
+### JSON mode: -j | --json
+
+Select from an array of 2-tuples. The first value in each tuple will be treated as the value and the second will be treated as a comment. Useful for cryptic values.
 
 ```bash
-# sel --mode=json '<JSON Array: [[value1, comment1], [value2, comment2], ...]>'
+# sel --json '<JSON Array: [[value1, comment1], [value2, comment2], ...]>'
 
-$ sel --mode=json '[["8.8.8.8", "Staging"], ["123.123.123.123.", "Production"]]'
+$ sel --json '[["8.8.8.8", "Staging"], ["123.123.123.123", "Production"]]'
 (1)  8.8.8.8            ## Staging
-(2)  123.123.123.123.   ## Production
+(2)  123.123.123.123   ## Production
 
 Which line do you want to select?
 ```
 
-### List mode
+### List mode: -l | --list
+
+Select from a space separated list of values.
 
 ```bash
-# sel --mode=list <space separated values>
+# sel --list <space separated values>
 
-$ sel --mode=list one two three
+$ sel --list one two three
 (1)  one
 (2)  two
 (3)  three
@@ -54,7 +58,7 @@ Which line do you want to select?
 ### Git Branch Switcher
 
 ```bash
-$ git checkout `node index.js git branch`
+$ sel git branch | xargs git checkout
 (1)  coffeescript
 (2)  * master
 (3)  purescript

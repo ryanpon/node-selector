@@ -1,13 +1,13 @@
 {
-  "name": "selector",
+  "name": "cli-selector",
   "version": "0.0.1",
-  "description": "Turn arbitrary commands into selectable lists",
+  "description": "Instant selectable lists for the command line",
   "repository": {
     "type": "git",
     "url": "https://github.com/ryanpon/node-selector"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=7.0.0"
   },
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,14 @@
     "bench": "node ./test/bench.js",
     "lint": "eslint ."
   },
+  "bin": {
+    "sel": "index.js"
+  },
+  "keywords": [
+    "cli",
+    "selector",
+    "prompt"
+  ],
   "author": "Ryan Pon",
   "license": "MIT",
   "devDependencies": {

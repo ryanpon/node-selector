@@ -5,33 +5,19 @@ const readline = require('readline')
 const {execSync} = require('child_process')
 
 const argv = require('yargs')
-  .default('mode', 'exec')
-  .alias('mode', 'm')
-  .boolean('e')
+  .boolean('e').alias('e', 'exec')
+  .boolean('l').alias('l', 'list')
+  .boolean('j').alias('j', 'json')
   .argv
 
-const command = argv._
-
-const lines = (mode => {
-  switch (mode) {
-    case 'e':
-    case 'exec':
-      return execSync(command.join(' '))
-        .toString().split('\n').map(s => s.trim()).filter(Boolean).map(c => [c])
-    case 'l':
-    case 'list':
-      return command.map(c => [c])
-    case 'j':
-    case 'json':
-      return JSON.parse(command)
-    default:
-      throw new Error(`Unrecognized mode "${mode}"`)
-  }
-})(argv.mode)
+const lines = [
+  [m => m.l || m.list, cmd => cmd.map(c => [c])],
+  [m => m.j || m.json, cmd => JSON.parse(cmd)],
+  [_ => true,          cmd => execSync(cmd.join(' ')).toString().split('\n').map(s => s.trim()).filter(Boolean).map(v => [v])]
+].find(([fn]) => fn(argv))[1](argv._)
 
 const maxLineLen = lines.map(([l]) => l.length).sort((a, b) => b - a)[0]
 const pad = Array(maxLineLen).fill(' ').join('')
-
 lines.forEach(([cmd, comment = ''], i) => {
   process.stderr.write(`(${i + 1})  ${(cmd + pad).slice(0, maxLineLen)}`)
   !comment || process.stderr.write(`   ## ${comment}`)
