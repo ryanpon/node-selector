@@ -2,13 +2,11 @@
 Turn arbitrary commands into selectable lists
 
 ## Installation
-
 Via npm:
 
     npm install -g cli-selector
 
 ## Usage
-
 ### Exec mode (default): -e | --exec
 
 ```bash

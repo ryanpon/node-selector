@@ -1,6 +1,6 @@
 {
   "name": "cli-selector",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Instant selectable lists for the command line",
   "repository": {
     "type": "git",
@@ -12,7 +12,9 @@
     "prepublish": "npm run build"
   },
   "babel": {
-    "presets": ["latest"]
+    "presets": [
+      "latest"
+    ]
   },
   "bin": {
     "sel": "build/index.js"
