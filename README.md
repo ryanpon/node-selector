@@ -65,6 +65,5 @@ $ sel git branch | xargs git checkout
 (4)  test
 
 Which line do you want to select? 3
-M README.md
 Switched to branch 'purescript'
 ```

@@ -6,17 +6,16 @@
     "type": "git",
     "url": "https://github.com/ryanpon/node-selector"
   },
-  "engines": {
-    "node": ">=7.0.0"
-  },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/**/*.spec.js",
-    "bench": "node ./test/bench.js",
-    "lint": "eslint ."
+    "build": "babel lib -d build",
+    "prepublish": "npm run build"
+  },
+  "babel": {
+    "presets": ["latest"]
   },
   "bin": {
-    "sel": "index.js"
+    "sel": "build/index.js"
   },
   "keywords": [
     "cli",
@@ -26,7 +25,9 @@
   "author": "Ryan Pon",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.22.2",
     "babel-eslint": "^6.1.2",
+    "babel-preset-latest": "^6.22.0",
     "chai": "^3.5.0",
     "chai-as-promised": "^5.3.0",
     "eslint": "^2.13.1",
