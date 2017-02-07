@@ -8,8 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "babel lib -d build",
-    "prepublish": "npm run build"
+    "build": "babel lib -d build"
   },
   "babel": {
     "presets": [
