@@ -1,6 +1,19 @@
 # node-selector
 Turn arbitrary commands into selectable lists
 
+### Example: instantly create a branch switcher alias
+```bash
+$ alias 'switch-branch'='git checkout `sel git branch`'
+$ switch-branch
+(1)  coffeescript
+(2)  * master
+(3)  purescript
+(4)  test
+
+Which line do you want to select? 3
+Switched to branch 'purescript'
+```
+
 ## Installation
 Via npm:
 
@@ -49,19 +62,4 @@ $ sel --list one two three
 (3)  three
 
 Which line do you want to select?
-```
-
-## Practical Examples
-
-### Git Branch Switcher
-
-```bash
-$ sel git branch | xargs git checkout
-(1)  coffeescript
-(2)  * master
-(3)  purescript
-(4)  test
-
-Which line do you want to select? 3
-Switched to branch 'purescript'
 ```
